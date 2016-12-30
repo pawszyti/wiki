@@ -22,39 +22,56 @@ body
 .menu_first
   background-color: $bg
   width: 100%
-  padding-bottom: 50px
+  padding-bottom: 60px
 
 .menu_second
   width: 1050px
   @include center
 
 .menu_third
+  background-color: lighten($bg,20)
   float: left
   padding: 10px
   vertical-align: middle
   display: block
+  border-radius: 10px
+  margin: 7px
+
+
 
 .menu_third:hover
   background-color: lighten($bg,10)
   transition-duration: .5s
 
 .menu_fourth
+  background-color: lighten($bg,20)
   float: right
-  padding: 10px
+  padding: 5px
   vertical-align: middle
   display: block
   text-align: center
   display: block
+  border-radius: 20px
+  margin: 7px
 
 .menu_five
   @extend .menu_fourth
 
+.active
+  @extend .menu_third
+  background-color: lighten($bg,10)
+  border: none
 
 
 
 .menu_fourth:hover
   background-color: lighten($bg,10)
   transition-duration: .5s
+
+
+*:focus
+  outline: none
+
 
 
 /* menu - end
@@ -122,8 +139,13 @@ header
   width: 270px
   border-radius: 20px
 
+.add
+  @extend .search
 
 
-
-
+.add_contents
+  height: 100px
+  width: 700px
+  margin-top: 30px
+  margin-bottom: 20px
 

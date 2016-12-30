@@ -15,9 +15,6 @@ if (mysqli_connect_errno()) {
 
 $db-> query("SET NAMES 'utf8' COLLATE 'utf8_general_ci'"); //dodanie kodowania utf-8
 
-?>
-
-<?php
 
 //$zapytanie = "SELECT * FROM list"; //zapytanie SQL pod zmienną zapytanie
 //$wynik = $db->query($zapytanie); //pobiera dane $db (bazy danych) i wykonuje zapytanie

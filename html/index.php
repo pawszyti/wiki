@@ -19,32 +19,46 @@
 <div class="menu_first">
     <div class="menu_second">
 
+        <button class="active">
+            <img src="../img/home.png"  width="17px" height="17px">
+            Home
+
+        </button>
 
 
-        <div class="menu_third">
-            <img src="img/plus.png"  width="25px" height="25px">
+        <button class="menu_third" onclick="window.location.href='/pages/add.php'">
+            <img src="img/plus.png"  width="17px" height="17px">
+
             Dodaj
 
-        </div>
+        </button>
 
-        <div class="menu_third">
-            <img src="img/minus.png" width="25px" height="25px">
+        <button class="menu_third">
+            <img src="img/minus.png" width="17px" height="17px">
             Usuń
 
-        </div>
+        </button>
 
-        <div class="menu_third">
-            <img src="img/info.png"  width="25px" height="25px">
+        <button class="menu_third">
+            <img src="img/info.png"  width="17px" height="17px">
             Sortuj
 
-        </div>
+        </button>
 
-        <div class="menu_fourth">
-
-            <img src="img/stop.png"  width="25px" height="25px">Wyloguj
+        <button class="menu_fourth">
 
 
-        </div>
+            <img src="img/stop.png"  width="17px" height="17px">Wyloguj
+
+
+        </button>
+
+        <button class="menu_fourth">
+
+            <img src="img/pass.png"  width="17px" height="17px">Zmień hasło
+
+
+        </button>
 
         <div class="menu_five">
 
@@ -91,18 +105,18 @@
 
         <?php
 
-        $zapytanie = "SELECT * FROM list"; //zapytanie SQL pod zmienną zapytanie
-        $wynik = $db->query($zapytanie); //pobiera dane $db (bazy danych) i wykonuje zapytanie
-        $ile = $wynik->num_rows; // liczy ile baza zwróciła wyników
+        $query = "SELECT * FROM list"; //zapytanie SQL pod zmienną zapytanie
+        $result = $db->query($query); //pobiera dane $db (bazy danych) i wykonuje zapytanie
+        $rows = $result->num_rows; // liczy ile baza zwróciła wyników
 
 
-        for ($i=0; $i<$ile; $i++){ //pętla for od 0 do liczby wyników
-            $wiersz = $wynik->fetch_assoc(); //wpisanie wyniku do tablicy assocjacyjnej
+        for ($i=0; $i<$rows; $i++){ //pętla for od 0 do liczby wyników
+            $line = $result->fetch_assoc(); //wpisanie wyniku do tablicy assocjacyjnej
 
             echo "
             <div class=\"inbox\">
-            <span class=\"title\">".$wiersz['title']."</span><br /><hr>
-            <span style=\"text-align: left\">".$wiersz['contents']."<br /> 
+            <span class=\"title\">".$line['title']."</span><br /><hr>
+            <span style=\"text-align: left\">".$line['contents']."<br /> 
             Kto dodał: to dodał: Paweł Szymczyk <br />
             Kategoria: CRM </span>
             </div>";
@@ -112,7 +126,7 @@
 
 
 
-        $wynik->free(); //zwalnienie zmiennej $wynik
+        $result->free(); //zwalnienie zmiennej $wynik
         $db->close(); //zamykanie połączenia z bazą danych
 
         ?>
