@@ -117,7 +117,7 @@
             <div class=\"inbox\">
             <span class=\"title\">".$line['title']."</span><br /><hr>
             <span style=\"text-align: left\">".$line['contents']."<br /> 
-            Kto dodał: to dodał: Paweł Szymczyk <br />
+            Kto dodał: Paweł Szymczyk <br />
             Kategoria: CRM </span>
             </div>";
         }
