@@ -124,11 +124,15 @@
 
         echo "
             <div class=\"inbox_more\">
-            <span class=\"title\">".$line['title']."</span><br /><hr>
-            <span style=\"text-align: left\">".$line['contents']."<br /> 
-            Kto dodał: Paweł Szymczyk <br />
-            Kategoria: CRM </span>
-            </div>";
+            <div class='inbox_more_top'><span class=\"title\">".$line['title']."</span><br /><hr>
+            <span style=\"text-align: left\">".$line['contents']."</div> 
+            <div class=\"inbox_more_bottom\"><hr>
+            Data dodania: 2017-01-20</div>
+            <div class=\"inbox_more_bottom\">
+            Kto dodał: Paweł Szymczyk</div>
+            <div class=\"inbox_more_bottom\">
+            Kategoria: CRM </span></div></div>
+            ";
     }
 
 

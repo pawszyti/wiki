@@ -8,8 +8,8 @@ $db_pass = 'pawel098';
 
 
 if (mysqli_connect_errno()) {
-    echo 'Błąd: Połączenie z bazą danych nie powiodło się';
-    exit;
+   echo "Error: ".$db->connect_errno;
+   exit;
 
 }
 
@@ -30,5 +30,3 @@ $db-> query("SET NAMES 'utf8' COLLATE 'utf8_general_ci'"); //dodanie kodowania u
 //$db->close(); //zamykanie połączenia z bazą danych
 
 ?>
-
-

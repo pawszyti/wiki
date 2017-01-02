@@ -29,7 +29,7 @@
 <div class="menu_first">
     <div class="menu_second">
 
-        <button class="menu_third" onclick="window.location.href='/../index.php'">
+        <button class="menu_third" onclick="window.location.href='/../main.php'">
             <img src="../img/home.png"  width="17px" height="17px">
             Home
 
@@ -118,7 +118,10 @@
         else{
         echo "<br /> Błąd, zapisywanie nie powiodło sie";
         }
-$db->close();
+
+        $result->free();
+        $db->close();
+
     ?>
 </form>
         </div>
