@@ -13,7 +13,6 @@ require_once ('config/config.php');
     <link href="css/style.css" rel="stylesheet">
 
 
-
 </head>
 <body>
 
@@ -35,10 +34,15 @@ require_once ('config/config.php');
     <br />    <br />
     <input type="submit" name="login" value="Zaloguj">
 </form>
+
+
+
+
     <?php
     if(isset($_SESSION['error'])) {
         echo "<br />" . $_SESSION['error'];
     }
+
     ?>
 
 </div>

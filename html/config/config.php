@@ -16,17 +16,4 @@ if (mysqli_connect_errno()) {
 $db-> query("SET NAMES 'utf8' COLLATE 'utf8_general_ci'"); //dodanie kodowania utf-8
 
 
-//$zapytanie = "SELECT * FROM list"; //zapytanie SQL pod zmienną zapytanie
-//$wynik = $db->query($zapytanie); //pobiera dane $db (bazy danych) i wykonuje zapytanie
-//$ile = $wynik->num_rows; // liczy ile baza zwróciła wyników
-
-
-//for ($i=0; $i<$ile; $i++){ //pętla for od 0 do liczby wyników
-//    $wiersz = $wynik->fetch_assoc(); //wpisanie wyniku do tablicy assocjacyjnej
-//    echo $wiersz['title']; //wypisanie konkretnego pola z tablicy
-//    echo "<br />";
-//}
-//$wynik->free(); //zwalnienie zmiennej $wynik
-//$db->close(); //zamykanie połączenia z bazą danych
-
 ?>

@@ -1,15 +1,24 @@
 <?php
 session_start();
 
-if ((!isset($_POST['username'])) || (!isset($_POST['password'])))
+
+//if ((!isset($_POST['username'])) || (!isset($_POST['password'])))
+
+
+
+if ($_POST['username']=="" || $_POST['password']=="")
+
 {
     header('location: index.php');
+    $_SESSION['error'] = '<span style="color:red">Pola nie mogą być puste</span>';
+
     exit();
 }
 
+
 include('config/config.php');
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = sha1($_POST['password']);
 $username = htmlentities($username, ENT_QUOTES, "UTF-8");
 $password = htmlentities($password, ENT_QUOTES, "UTF-8");
 
@@ -30,6 +39,7 @@ if ($result = $db->query(sprintf("SELECT * FROM users WHERE username='%s' AND pa
         }
         else
         {
+            session_unset();
             $_SESSION['error'] = '<span style="color:red">Niepoprawne dane logowania</span>';
             header('location: index.php');
 
