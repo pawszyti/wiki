@@ -1,15 +1,12 @@
 <?php
 session_start();
-if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7") {
+if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7" && isset($_COOKIE['status'])) {
+setcookie("status",'online', time()+900);
 include ('../config/config.php');
-
 $add_title=$_POST['add_title'];
-//$add_category=$_POST['add_cetegory'];
 $add_category=1;
-
 $add_contents=$_POST['add_contents'];
 $date = date("Y-m-d");
-
 $ID_user = 1;
 $wiki =1;
 ?>
@@ -144,7 +141,7 @@ $wiki =1;
 }
 else
 {
-    header('location: ../index.php');
+    header('location: ../logout.php');
     exit();
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7")
+if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7" && isset($_COOKIE['status']))
 {
     header('location: main.php');
     exit();
@@ -51,7 +51,6 @@ require_once ('config/config.php');
         unset($_SESSION['error']);
         echo "<br />" . $error;
     }
-//    echo("Cookie to: ".$_COOKIE['username']);
     $db->close();
     ?>
 

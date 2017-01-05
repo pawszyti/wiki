@@ -1,6 +1,7 @@
 <?php
 session_start();
-if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7") {
+if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7" && isset($_COOKIE['status'])) {
+setcookie("status",'online', time()+900);
 require_once ('config/config.php');
 $username = $_SESSION['username'];
 $name = $_SESSION['name'];
@@ -136,7 +137,7 @@ $surname = $_SESSION['surname'];
     }
     else
     {
-        header('location: index.php');
+        header('location: logout.php');
         exit();
     }
 

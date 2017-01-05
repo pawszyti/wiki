@@ -34,7 +34,7 @@ if ($result = $db->query(sprintf("SELECT * FROM users WHERE username='%s' AND pa
             $_SESSION['surname'] = $row['surname'];
             $_SESSION['online'] = sha1(lock);
             $_SESSION['ID_user'] = $row['ID_user'];
-            setcookie("status",'online', time()+60);
+            setcookie("status",'online', time()+10);
             header ('location: main.php');
         }
         else
