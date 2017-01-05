@@ -1,3 +1,20 @@
+<?php
+session_start();
+if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7") {
+include ('../config/config.php');
+
+$add_title=$_POST['add_title'];
+//$add_category=$_POST['add_cetegory'];
+$add_category=1;
+
+$add_contents=$_POST['add_contents'];
+$date = date("Y-m-d");
+
+$ID_user = 1;
+$wiki =1;
+?>
+
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -6,19 +23,7 @@
     <title>Baza Wiedzy - CSSA</title>
 
     <link href="../css/style.css" rel="stylesheet">
-    <?php
-    include ('../config/config.php');
 
-    $add_title=$_POST['add_title'];
-    //$add_category=$_POST['add_cetegory'];
-    $add_category=1;
-
-    $add_contents=$_POST['add_contents'];
-    $date = date("Y-m-d");
-
-    $ID_user = 1;
-    $wiki =1;
-    ?>
 
 
 </head>
@@ -54,7 +59,7 @@
 
         </button>
 
-        <button class="menu_fourth">
+        <button class="menu_fourth" onclick="window.location.href='../logout.php'">
 
 
             <img src="../img/stop.png"  width="17px" height="17px">Wyloguj
@@ -135,7 +140,13 @@
     </div>
     </div>
 
-    <!--</div>-->
-
+<?php
+}
+else
+{
+    header('location: ../index.php');
+    exit();
+}
+?>
 </body>
 </html>

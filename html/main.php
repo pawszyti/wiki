@@ -1,5 +1,6 @@
 <?php
 session_start();
+if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7") {
 require_once ('config/config.php');
 $username = $_SESSION['username'];
 $name = $_SESSION['name'];
@@ -26,14 +27,14 @@ $surname = $_SESSION['surname'];
     <div class="menu_second">
 
         <button class="active">
-            <img src="../img/home.png"  width="17px" height="17px">
+            <img src="../img/home.png" width="17px" height="17px">
             Home
 
         </button>
 
 
         <button class="menu_third" onclick="window.location.href='/pages/add.php'">
-            <img src="img/plus.png"  width="17px" height="17px">
+            <img src="img/plus.png" width="17px" height="17px">
 
             Dodaj
 
@@ -46,7 +47,7 @@ $surname = $_SESSION['surname'];
         </button>
 
         <button class="menu_third">
-            <img src="img/info.png"  width="17px" height="17px">
+            <img src="img/info.png" width="17px" height="17px">
             Sortuj
 
         </button>
@@ -54,28 +55,26 @@ $surname = $_SESSION['surname'];
         <button class="menu_fourth" onclick="window.location.href='logout.php'">
 
 
-            <img src="img/stop.png"  width="17px" height="17px">Wyloguj
+            <img src="img/stop.png" width="17px" height="17px">Wyloguj
 
 
         </button>
 
         <button class="menu_fourth">
 
-            <img src="img/pass.png"  width="17px" height="17px">Zmień hasło
+            <img src="img/pass.png" width="17px" height="17px">Zmień hasło
 
 
         </button>
 
         <div class="menu_five">
 
-            <span style="font-weight: bold; font-size: 14px">  <?php echo "Zalogowany: ".$name." ".$surname?></span>
+            <span style="font-weight: bold; font-size: 14px">  <?php echo "Zalogowany: " . $name . " " . $surname ?></span>
 
         </div>
 
     </div>
 </div>
-
-
 
 
 <div class="page">
@@ -87,7 +86,7 @@ $surname = $_SESSION['surname'];
 
 
         <div class="search">
-            <span style="font-size: 20px">Wyszukaj:</span><br /><br />
+            <span style="font-size: 20px">Wyszukaj:</span><br/><br/>
             Tytuł: <input type="text" name="title" size="20px">
             W treści: <input type="text" name="contents" size="20px">
             Dodał: <select name="user">
@@ -108,41 +107,39 @@ $surname = $_SESSION['surname'];
         </div>
 
 
-
         <?php
-
-
         $query = "SELECT * FROM list"; //zapytanie SQL pod zmienną zapytanie
         $result = $db->query($query); //pobiera dane $db (bazy danych) i wykonuje zapytanie
         $rows = $result->num_rows; // liczy ile baza zwróciła wyników
-
-
-        for ($i=0; $i<$rows; $i++){ //pętla for od 0 do liczby wyników
+        for ($i = 0; $i < $rows; $i++) { //pętla for od 0 do liczby wyników
             $line = $result->fetch_assoc(); //wpisanie wyniku do tablicy assocjacyjnej
-
             echo "
             <div class=\"inbox\">
-            <span class=\"title\">".$line['title']."</span><br /><hr>
-            <span style=\"text-align: left\">".$line['contents']."<br /> 
+            <span class=\"title\">" . $line['title'] . "</span><br /><hr>
+            <span style=\"text-align: left\">" . $line['contents'] . "<br /> 
             Kto dodał: Paweł Szymczyk <br />
             Kategoria: CRM </span>
             </div>";
         }
-
         unset($_SESSION['error']);
         $result->free(); //zwalnienie zmiennej $wynik
         $db->close(); //zamykanie połączenia z bazą danych
-
         ?>
 
 
-
-        <br />
-        <div class="number">  Strona: 1 >>
+        <br/>
+        <div class="number"> Strona: 1 >>
         </div>
     </div>
 
-    <!--</div>-->
+    <?php
+    }
+    else
+    {
+        header('location: index.php');
+        exit();
+    }
 
+    ?>
 </body>
 </html>

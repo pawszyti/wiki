@@ -2,9 +2,6 @@
 session_start();
 
 
-//if ((!isset($_POST['username'])) || (!isset($_POST['password'])))
-
-
 
 if ($_POST['username']=="" || $_POST['password']=="")
 
@@ -35,14 +32,23 @@ if ($result = $db->query(sprintf("SELECT * FROM users WHERE username='%s' AND pa
             $_SESSION['username'] = $row['username'];
             $_SESSION['name'] = $row['name'];
             $_SESSION['surname'] = $row['surname'];
+            $_SESSION['online'] = sha1(lock);
+            $_SESSION['ID_user'] = $row['ID_user'];
+            setcookie("status",'online', time()+60);
             header ('location: main.php');
         }
         else
         {
-            session_unset();
             $_SESSION['error'] = '<span style="color:red">Niepoprawne dane logowania</span>';
             header('location: index.php');
 
         }
 }
+
+
+
+$db->close();
+
+
+
 ?>

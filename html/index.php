@@ -1,10 +1,16 @@
 <?php
 session_start();
+if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7")
+{
+    header('location: main.php');
+    exit();
+}
+
 require_once ('config/config.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Paweł Szymczyk" />
@@ -39,10 +45,14 @@ require_once ('config/config.php');
 
 
     <?php
-    if(isset($_SESSION['error'])) {
-        echo "<br />" . $_SESSION['error'];
-    }
 
+    if(isset($_SESSION['error'])) {
+        $error = $_SESSION['error'];
+        unset($_SESSION['error']);
+        echo "<br />" . $error;
+    }
+//    echo("Cookie to: ".$_COOKIE['username']);
+    $db->close();
     ?>
 
 </div>
@@ -54,7 +64,6 @@ require_once ('config/config.php');
 
 
 </div>
-
 
 </body>
 </html>
