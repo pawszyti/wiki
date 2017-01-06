@@ -23,15 +23,16 @@ $surname = $_SESSION['surname'];
 
 </head>
 <body>
+
     <div class="menu_first">
         <div class="menu_second">
 
             <button class="active">
-                <img src="../img/home.png" width="17px" height="17px">
+                <img src="img/home.png" width="17px" height="17px">
                     Home
             </button>
 
-            <button class="menu_third" onclick="window.location.href='/pages/add.php'">
+            <button class="menu_third" onclick="window.location.href='pages/add.php'">
                 <img src="img/plus.png" width="17px" height="17px">
                     Dodaj
             </button>
@@ -78,6 +79,13 @@ $surname = $_SESSION['surname'];
             </form>
 
         </div>
+        <?php
+        if (isset($_SESSION['alert_pass']))
+        {
+            echo $_SESSION['alert_pass'];
+            unset($_SESSION['alert_pass']);
+        }
+        ?>
     </div>
 
 
