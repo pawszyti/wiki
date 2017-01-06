@@ -103,14 +103,12 @@ $wiki =1;
 
    if (!$add_title || !$add_contents)
     {
-        //echo "<br /> Nie podano wszystkich danych";
         exit;
     }
 
-//    $query = "INSERT INTO `list` (`ID_wiki`, `title`, `contents`, `ID_user`, `category_ID`, `add_date`) VALUES (NULL, 'teset', 'tesetowy', '1', '2', '2016-11-30')";
 
     $query = "INSERT INTO `list` (`ID_wiki`, `title`, `contents`, `ID_user`, `category_ID`, `add_date`) VALUES (NULL, '$add_title', '$add_contents' , '$ID_user', '$add_category', '$date')";
-
+//Dodawanie ticketa do bazdy danych (tabela: list)
 
     $result = $db->query($query);
 
