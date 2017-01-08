@@ -15,6 +15,7 @@ $username = htmlentities($username, ENT_QUOTES, "UTF-8");//dodawanie encji
 $password = htmlentities($password, ENT_QUOTES, "UTF-8");//dodawanie encji
 
 if ($result = $db->query(sprintf("SELECT * FROM users WHERE username='%s' AND password='%s'",
+// jesli zapytanie sie wykona to if bedzie spełniony, jesli nie wykona przyjmie false
     mysqli_real_escape_string($db,$username),
     mysqli_real_escape_string($db,$password))))
 {
