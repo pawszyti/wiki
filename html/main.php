@@ -19,7 +19,8 @@ $surname = $_SESSION['surname'];
 
     <link href="css/style.css" rel="stylesheet">
     <link href="css/change_password.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
 
 </head>
 <body>
@@ -52,7 +53,7 @@ $surname = $_SESSION['surname'];
                     Wyloguj
             </button>
 
-            <button class="menu_fourth">
+            <button class="menu_fourth" onclick="show()">
                 <img src="img/pass.png" width="17px" height="17px">
                     Zmień hasło
             </button>
@@ -65,20 +66,27 @@ $surname = $_SESSION['surname'];
         </div>
     </div>
 
-    <div class="menu_first_more">
+    <div class="menu_first_pass" id="pass_block">
         <div class="menu_second">
-            <br />
+            <br /><span style="font-size: 12px; text-align:center">
             <form action="change_password.php" method="post">
             Stare hasło:
-            <input type="text" name="old_password">
+            <input type="password" name="old_password" size="10">
             Nowe hasło:
-            <input type="text" name="new_password1">
+            <input type="password" name="new_password1" size="10">
             Powtórz nowe hasło:
-            <input type="text" name="new_password2">
-            <input type="submit" value="Zmień">
+            <input type="password" name="new_password2" size="10">
+            <input type="submit" value="Zmień hasło">
+                </span>
             </form>
 
+
         </div>
+
+
+    </div>
+
+    <div class="message">
         <?php
         if (isset($_SESSION['alert_pass']))
         {
@@ -86,9 +94,7 @@ $surname = $_SESSION['surname'];
             unset($_SESSION['alert_pass']);
         }
         ?>
-    </div>
-
-
+        </div>
 
     <div class="page">
         <header>
