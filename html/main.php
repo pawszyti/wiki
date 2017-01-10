@@ -122,11 +122,31 @@ $surname = $_SESSION['surname'];
                     <option value="4">Inne</option>
                 </select>
         </div>
+
+
         <?php
-        $query = "SELECT * FROM list"; //zapytanie SQL pod zmienną query
+        $query2 = "SELECT * FROM list "; //zapytanie SQL pod zmienną query
+        $result2 = $db->query($query2); //pobiera dane $db (bazy danych) i wykonuje zapytanie
+        $rows2 = $result2->num_rows; // liczy ile baza zwróciła wyników
+
+        $page = isset ($_GET['page']) ? intval ($_GET['page'] -1): 1;
+
+        $limit = 3;
+        $from = $page * $limit;
+        $all_page = ceil($rows2/$limit);
+
+
+
+        $query = "SELECT * FROM list LIMIT $from,$limit"; //zapytanie SQL pod zmienną query
         $result = $db->query($query); //pobiera dane $db (bazy danych) i wykonuje zapytanie
         $rows = $result->num_rows; // liczy ile baza zwróciła wyników
-        for ($i = 0; $i < $rows; $i++) { //pętla for od 0 do liczby wyników
+
+
+
+
+
+        for ($i = 0; $i < $rows; $i++)
+        { //pętla for od 0 do liczby wyników
             $line = $result->fetch_assoc(); //wpisanie wyniku do tablicy assocjacyjnej
             echo "
             <div class=\"inbox\">
@@ -136,15 +156,22 @@ $surname = $_SESSION['surname'];
             Kategoria: CRM </span>
             </div>";
         }
+
         unset($_SESSION['error']);
-        $result->free(); //zwalnienie zmiennej $wynik
         $db->close(); //zamykanie połączenia z bazą danych
         ?>
+
+
         <br/>
-        <div class="number"> Strona: 1 >>
-        </div>
-    </div>
-    <?php
+            <?php
+            for ($i = 1; $i <=$all_page; $i++)
+            {
+                echo '<a href="main.php?page='.$i.'">'.$i.'</a> | ';
+            }
+
+
+            
+
     }
     else
     {
