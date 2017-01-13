@@ -92,9 +92,12 @@ header {
   margin-left: auto;
   border-style: ridge;
   margin-top: 20px;
-  text-align: left;
+  text-align: justify;
   background-color: white;
   width: 80%; }
+
+.inbox2 {
+  height: 50px; }
 
 .title {
   color: #990033;
@@ -121,5 +124,10 @@ header {
   width: 700px;
   margin-top: 30px;
   margin-bottom: 20px; }
+
+.page_num {
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */

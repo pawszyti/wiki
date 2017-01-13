@@ -129,11 +129,12 @@ $surname = $_SESSION['surname'];
         $result2 = $db->query($query2); //pobiera dane $db (bazy danych) i wykonuje zapytanie
         $rows2 = $result2->num_rows; // liczy ile baza zwróciła wyników
 
-        $page = isset ($_GET['page']) ? intval ($_GET['page'] -1): 1;
+        $page = isset ($_GET['page']) ? intval ($_GET['page'] -1): 0;
 
-        $limit = 3;
+        $limit = 6;
         $from = $page * $limit;
         $all_page = ceil($rows2/$limit);
+
 
 
 
@@ -151,7 +152,7 @@ $surname = $_SESSION['surname'];
             echo "
             <div class=\"inbox\">
             <span class=\"title\">" . $line['title'] . "</span><br /><hr>
-            <span style=\"text-align: left\">" . $line['contents'] . "<br /> 
+            <span style=\"text-align: justify\"><div class='inbox2'>" . substr($line['contents'],0,340) ."</div> <br /> 
             Kto dodał: Paweł Szymczyk <br />
             Kategoria: CRM </span>
             </div>";
@@ -164,13 +165,15 @@ $surname = $_SESSION['surname'];
 
         <br/>
             <?php
+
+            echo "<div class=\"page_num\">";
             for ($i = 1; $i <=$all_page; $i++)
             {
-                echo '<a href="main.php?page='.$i.'">'.$i.'</a> | ';
+                $bold = ($i == ($page+1) ) ? 'style="font-size: 30px;':'';
+                echo '<a '.$bold.' href="main.php?page='.$i.'">'.$i.'</a> | ';
             }
+            echo "</div>";
 
-
-            
 
     }
     else
@@ -180,5 +183,6 @@ $surname = $_SESSION['surname'];
         //jesli pierwszy warunek nie został spełniony to prześlij to strony wylogowania
     }
     ?>
+
 </body>
 </html>
