@@ -1,9 +1,15 @@
 <?php
 session_start();
+
+
+//LOGOWANIE - SPRAWDZENIE - START
+
 if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7" && isset($_COOKIE['status'])) {
     //Czy istnieje zmienna sesyjna "online", czy zawartosc zmiennej sesyjnej odpowiada ciagowi znakow , czy istnieje cookie status
 setcookie("status",'online', time()+900);
     //odświerzenie cookie status na 15 minut jesli juz istnieło w momencie załadowania
+//LOGOWANIE - SPRAWDZENIE - STOP
+
 require_once ('config/config.php');
 $username = $_SESSION['username'];
 $name = $_SESSION['name'];
@@ -93,8 +99,9 @@ $surname = $_SESSION['surname'];
             echo $_SESSION['alert_pass'];
             unset($_SESSION['alert_pass']);
         }
+        //alerty dotyczące zmiany hasłą (puste pule, hasła nowe różne... z [change_password.php])
         ?>
-        </div>
+                </div>
 
     <div class="page">
         <header>
@@ -151,7 +158,7 @@ $surname = $_SESSION['surname'];
             $line = $result->fetch_assoc(); //wpisanie wyniku do tablicy assocjacyjnej
             echo "
             <div class=\"inbox\">
-            <span class=\"title\">" . $line['title'] . "</span><br /><hr>
+            <span class=\"title\"><a href='/pages/read_more.php?ID_wiki=" .$line['ID_wiki']."'>".$line['title'] . "</a></span><br /><hr>
             <span style=\"text-align: justify\"><div class='inbox2'>" . substr($line['contents'],0,340) ."</div> <br /> 
             Kto dodał: Paweł Szymczyk <br />
             Kategoria: CRM </span>
@@ -174,6 +181,7 @@ $surname = $_SESSION['surname'];
             }
             echo "</div>";
 
+            //LOGOWANIE 2 - SPRAWDZENIE - START
 
     }
     else
@@ -182,7 +190,8 @@ $surname = $_SESSION['surname'];
         exit();
         //jesli pierwszy warunek nie został spełniony to prześlij to strony wylogowania
     }
-    ?>
+            //LOGOWANIE - SPRAWDZENIE - STOP
+            ?>
 
 </body>
 </html>

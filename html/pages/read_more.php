@@ -1,3 +1,29 @@
+<?php
+session_start();
+
+
+//LOGOWANIE - SPRAWDZENIE - START
+
+if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7" && isset($_COOKIE['status'])) {
+//Czy istnieje zmienna sesyjna "online", czy zawartosc zmiennej sesyjnej odpowiada ciagowi znakow , czy istnieje cookie status
+setcookie("status",'online', time()+900);
+//odświerzenie cookie status na 15 minut jesli juz istnieło w momencie załadowania
+//LOGOWANIE - SPRAWDZENIE - STOP
+
+require_once ('../config/config.php');
+
+$add_title=$_POST['add_title'];
+//$add_category=$_POST['add_cetegory'];
+$add_category=1;
+
+$add_contents=$_POST['add_contents'];
+$date = date("Y-m-d");
+
+$ID_user = 1;
+$wiki =1;
+$ID_wiki = $_GET['ID_wiki'];
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -9,19 +35,7 @@
     <link href="../css/read_more.css" rel="stylesheet">
 
 
-    <?php
-    include ('../config/config.php');
 
-    $add_title=$_POST['add_title'];
-    //$add_category=$_POST['add_cetegory'];
-    $add_category=1;
-
-    $add_contents=$_POST['add_contents'];
-    $date = date("Y-m-d");
-
-    $ID_user = 1;
-    $wiki =1;
-    ?>
 
 
 </head>
@@ -114,7 +128,7 @@
 
     <?php
 
-    $query = "SELECT * FROM list WHERE ID_wiki LIKE 2"; //zapytanie SQL pod zmienną zapytanie
+    $query = "SELECT * FROM list WHERE ID_wiki LIKE $ID_wiki"; //zapytanie SQL pod zmienną zapytanie
     $result = $db->query($query); //pobiera dane $db (bazy danych) i wykonuje zapytanie
     $rows = $result->num_rows; // liczy ile baza zwróciła wyników
 
@@ -138,7 +152,6 @@
 
 
 
-
     $result->free(); //zwalnienie zmiennej $wynik
     $db->close(); //zamykanie połączenia z bazą danych
 
@@ -156,6 +169,17 @@
     </div>
 
     <!--</div>-->
+<?php
+//LOGOWANIE 2 - SPRAWDZENIE - START
 
+}
+else
+{
+header('location: ../logout.php');
+exit();
+//jesli pierwszy warunek nie został spełniony to prześlij to strony wylogowania
+}
+//LOGOWANIE - SPRAWDZENIE - STOP
+?>
 </body>
 </html>
