@@ -14,14 +14,22 @@ require_once ('config/config.php');
 $username = $_SESSION['username'];
 $name = $_SESSION['name'];
 $surname = $_SESSION['surname'];
-?>
 
+$query_logo = "SELECT * FROM settings WHERE name_setting LIKE 'logo'";
+if ($result_logo = $db->query($query_logo)) {
+    $line_logo = $result_logo->fetch_assoc();
+}
+else
+{
+    echo "SQL error (logo)";
+}
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Paweł Szymczyk" />
-    <title>Baza Wiedzy - CSSA</title>
+    <title>Baza Wiedzy</title>
 
     <link href="css/style.css" rel="stylesheet">
     <link href="css/change_password.css" rel="stylesheet">
@@ -105,7 +113,7 @@ $surname = $_SESSION['surname'];
 
     <div class="page">
         <header>
-            Baza Wiedzy CSSA
+            <?php echo $line_logo['text_setting']; ?>
         </header>
 
         <div class="page_slave">
