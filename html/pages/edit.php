@@ -31,14 +31,14 @@ $ID_wiki = $_GET['id'];
     <div class="menu_second">
 
         <a href="../index.php"> <button class="menu_third">
-            <img src="../img/home.png"  width="17px" height="17px">
-            Home
+                <img src="../img/home.png"  width="17px" height="17px">
+                Home
             </button></a>
 
         <a href="add.php"><button class="menu_third">
-            <img src="../img/plus.png"  width="17px" height="17px">
-            Dodaj
-        </button></a>
+                <img src="../img/plus.png"  width="17px" height="17px">
+                Dodaj
+            </button></a>
 
         <button class="menu_third">
             <img src="../img/minus.png" width="17px" height="17px">
@@ -64,21 +64,20 @@ $ID_wiki = $_GET['id'];
     </div>
 </div>
 
-
+<form action="edit_ok.php" method="post">
 <div class="menu_first_more">
     <div class="menu_second">
-<div class="menu_center">
-       <?php echo"<a href='del.php?id=".$ID_wiki."'>"?> <button class="menu_third_more">
-            <img src="../img/minus.png" width="17px" height="17px">
-            Usuń
-        </button></a>
+        <div class="menu_center">
+                <?php echo"<a href='del.php?id=".$ID_wiki."'>"?> <button class="menu_third_more">
+                <img src="../img/ok.png" width="17px" height="17px">
+                Zatwierdź
+            </button></a>
 
-    <?php echo"<a href='edit.php?id=".$ID_wiki."'>"?> <button class="menu_third_more">
-            <img src="../img/info.png"  width="17px" height="17px">
-            Edytuj
-        </button></a>
-
-</div>
+            <?php echo"<a href='read_more.php?id=".$ID_wiki."'>"?> <button class="menu_third_more">
+                <img src="../img/no.png"  width="17px" height="17px">
+                Anuluj
+            </button></a>
+        </div>
     </div>
 </div>
 
@@ -88,36 +87,39 @@ $ID_wiki = $_GET['id'];
     </header>
 
     <div class="page_slave_more">
-    <?php
-    $query = "SELECT * FROM list, users, categories WHERE list.ID_user = users.ID_user AND list.category_ID = categories.category_ID AND ID_wiki LIKE $ID_wiki"; //zapytanie SQL pod zmienną zapytanie
-    $result = $db->query($query); //pobiera dane $db (bazy danych) i wykonuje zapytanie
-    $rows = $result->num_rows; // liczy ile baza zwróciła wyników
+        <?php
+        $query = "SELECT * FROM list, users, categories WHERE list.ID_user = users.ID_user AND list.category_ID = categories.category_ID AND ID_wiki LIKE $ID_wiki"; //zapytanie SQL pod zmienną zapytanie
+        $result = $db->query($query); //pobiera dane $db (bazy danych) i wykonuje zapytanie
+        $rows = $result->num_rows; // liczy ile baza zwróciła wyników
 
-    for ($i=0; $i<$rows; $i++){ //pętla for od 0 do liczby wyników
-        $line = $result->fetch_assoc(); //wpisanie wyniku do tablicy assocjacyjnej
-        echo "
+        for ($i=0; $i<$rows; $i++){ //pętla for od 0 do liczby wyników
+            $line = $result->fetch_assoc(); //wpisanie wyniku do tablicy assocjacyjnej
+            echo "
             <div class=\"inbox_more\">
-            <div class='inbox_more_top'><span class=\"title\">".$line['title']."</span><br /><hr>
-            <span style=\"text-align: left\">".$line['contents']."</div> 
+            <div class='inbox_edit_top'><input type='text' value='".$line['title']."' size='50px'></span><br /><hr>
+            <span style=\"text-align: left\"> <textarea class=\"edit_contents\">".$line['contents']."'</textarea></div> 
             <div class=\"inbox_more_bottom\"><hr>
-            Data dodania: ".$line['add_date']."</div>
-            <div class=\"inbox_more_bottom\">
-            Kto dodał: ".$line['name']." ".$line['surname']."</div>
-            <div class=\"inbox_more_bottom\">
-            Kategoria: ".$line['categories_name']."</span></div></div>
+            
+            
+            Kategoria: <select name='category'>
+            <option value=\"0\">--</option>
+            <option value=\"1\">CRM</option>
+            <option value=\"2\">Komputer</option></select>
+            
+            </span></div></div>
             ";
-    }
-    ?>
-</form>
-            </div>
-        </div>
+        }
+        ?>
+        </form>
     </div>
+</div>
+</div>
 <?php
 $db->close();}
 else
 {
-header('location: ../logout.php');
-exit();
+    header('location: ../logout.php');
+    exit();
 }
 ?>
 </body>

@@ -1,3 +1,4 @@
+//change password - begin
 var change_pass = 0;
 
 function show()
@@ -14,4 +15,4 @@ function show()
 
     }
 }
-
+//change password - end

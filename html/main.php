@@ -1,41 +1,27 @@
 <?php
 session_start();
 
-
-//LOGOWANIE - SPRAWDZENIE - START
-
-if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7" && isset($_COOKIE['status'])) {
-    //Czy istnieje zmienna sesyjna "online", czy zawartosc zmiennej sesyjnej odpowiada ciagowi znakow , czy istnieje cookie status
-setcookie("status",'online', time()+900);
-    //odświerzenie cookie status na 15 minut jesli juz istnieło w momencie załadowania
-//LOGOWANIE - SPRAWDZENIE - STOP
-
+                //LOGOWANIE - SPRAWDZENIE - START
+                if (isset($_SESSION['online']) && $_SESSION['online'] == sha1(lock) && isset($_COOKIE['status'])) {
+                    //Czy istnieje zmienna sesyjna "online", czy zawartosc zmiennej sesyjnej odpowiada ciagowi znakow , czy istnieje cookie status
+                setcookie("status",'online', time()+900);
+                    //odświerzenie cookie status na 15 minut jesli juz istnieło w momencie załadowania
+                //LOGOWANIE - SPRAWDZENIE - STOP
 require_once ('config/config.php');
 $username = $_SESSION['username'];
 $name = $_SESSION['name'];
 $surname = $_SESSION['surname'];
-
-$query_logo = "SELECT * FROM settings WHERE name_setting LIKE 'logo'";
-if ($result_logo = $db->query($query_logo)) {
-    $line_logo = $result_logo->fetch_assoc();
-}
-else
-{
-    echo "SQL error (logo)";
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Paweł Szymczyk" />
     <title>Baza Wiedzy</title>
-
     <link href="css/style.css" rel="stylesheet">
     <link href="css/change_password.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
-
 </head>
 <body>
 
@@ -47,10 +33,10 @@ else
                     Home
             </button>
 
-            <button class="menu_third" onclick="window.location.href='pages/add.php'">
+            <a href="pages/add.php"> <button class="menu_third">
                 <img src="img/plus.png" width="17px" height="17px">
                     Dodaj
-            </button>
+            </button></a>
 
             <button class="menu_third">
                 <img src="img/minus.png" width="17px" height="17px">
@@ -62,10 +48,10 @@ else
                     Sortuj
             </button>
 
-            <button class="menu_fourth" onclick="window.location.href='logout.php'">
+            <a href="logout.php"><button class="menu_fourth">
                 <img src="img/stop.png" width="17px" height="17px">
                     Wyloguj
-            </button>
+            </button></a>
 
             <button class="menu_fourth" onclick="show()">
                 <img src="img/pass.png" width="17px" height="17px">
@@ -93,11 +79,7 @@ else
             <input type="submit" value="Zmień hasło">
                 </span>
             </form>
-
-
         </div>
-
-
     </div>
 
     <div class="message">
@@ -150,36 +132,27 @@ else
         $from = $page * $limit;
         $all_page = ceil($rows2/$limit);
 
+        //$query = "SELECT * FROM list LIMIT $from,$limit"; //zapytanie SQL pod zmienną query
+        $query = "SELECT * FROM list, users, categories WHERE list.ID_user = users.ID_user AND list.category_ID = categories.category_ID ORDER BY ID_wiki DESC LIMIT $from, $limit"; //zapytanie SQL pod zmienną query
+        $result = $db->query($query);
 
 
-
-        $query = "SELECT * FROM list LIMIT $from,$limit"; //zapytanie SQL pod zmienną query
-        $result = $db->query($query); //pobiera dane $db (bazy danych) i wykonuje zapytanie
+        //pobiera dane $db (bazy danych) i wykonuje zapytanie
         $rows = $result->num_rows; // liczy ile baza zwróciła wyników
-
-
-
-
 
         for ($i = 0; $i < $rows; $i++)
         { //pętla for od 0 do liczby wyników
             $line = $result->fetch_assoc(); //wpisanie wyniku do tablicy assocjacyjnej
             echo "
             <div class=\"inbox\">
-            <span class=\"title\"><a href='/pages/read_more.php?ID_wiki=" .$line['ID_wiki']."'>".$line['title'] . "</a></span><br /><hr>
+            <span class=\"title\"><a href='/pages/read_more.php?id=" .$line['ID_wiki']."'>".$line['title'] . "</a></span><br /><hr>
             <span style=\"text-align: justify\"><div class='inbox2'>" . substr($line['contents'],0,340) ."</div> <br /> 
-            Kto dodał: Paweł Szymczyk <br />
-            Kategoria: CRM </span>
+            Kto dodał: ".$line['name']." ".$line['surname']."<br />
+            Kategoria: ".$line['categories_name']."</span>
             </div>";
         }
 
-        unset($_SESSION['error']);
-        $db->close(); //zamykanie połączenia z bazą danych
-        ?>
 
-
-        <br/>
-            <?php
 
             echo "<div class=\"page_num\">";
             for ($i = 1; $i <=$all_page; $i++)
@@ -191,6 +164,8 @@ else
 
             //LOGOWANIE 2 - SPRAWDZENIE - START
 
+        unset($_SESSION['error']);
+        $db->close(); //zamykanie połączenia z bazą danych
     }
     else
     {
@@ -199,7 +174,7 @@ else
         //jesli pierwszy warunek nie został spełniony to prześlij to strony wylogowania
     }
             //LOGOWANIE - SPRAWDZENIE - STOP
-            ?>
+    ?>
 
 </body>
 </html>

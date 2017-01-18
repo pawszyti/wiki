@@ -1,34 +1,25 @@
 <?php
 session_start();
-if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7" && isset($_COOKIE['status']))
+if (isset($_SESSION['online']) && $_SESSION['online'] == sha1(lock) && isset($_COOKIE['status']))
 {
     header('location: main.php');
     exit();
 }
-
 require_once ('config/config.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Paweł Szymczyk" />
-    <title>Baza Wiedzy - CSSA</title>
-
+    <title>Baza Wiedzy</title>
     <link href="css/style.css" rel="stylesheet">
-
-
 </head>
 <body>
 
-
-
-
-
 <div class="page">
 <header>
-    Baza Wiedzy CSSA
+    <?php echo $line_logo['text_setting']; ?>
 </header>
 
 <div class="login">
@@ -41,11 +32,7 @@ require_once ('config/config.php');
     <input type="submit" name="login" value="Zaloguj">
 </form>
 
-
-
-
     <?php
-
     if(isset($_SESSION['error'])) {
         $error = $_SESSION['error'];
         unset($_SESSION['error']);
@@ -53,17 +40,9 @@ require_once ('config/config.php');
     }
     $db->close();
     ?>
-
+    </div>
+    <br />
 </div>
-
-
-
-<br />
-
-
-
-</div>
-
 </body>
 </html>
 

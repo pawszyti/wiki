@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (isset($_SESSION['online']) && $_SESSION['online'] == "e117797422d35ce52f036963c7e9603e9955b5c7" && isset($_COOKIE['status'])) {
+if (isset($_SESSION['online']) && $_SESSION['online'] == sha1(lock) && isset($_COOKIE['status'])) {
 setcookie("status",'online', time()+900);
-include ('../config/config.php');
+require_once ('../config/config.php');
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -16,10 +16,10 @@ include ('../config/config.php');
 <div class="menu_first">
     <div class="menu_second">
 
-        <button class="menu_third" onclick="window.location.href='../main.php'">
+        <a href="../main.php"><button class="menu_third">
             <img src="../img/home.png"  width="17px" height="17px">
             Home
-        </button>
+        </button></a>
 
         <button class="active">
             <img src="../img/plus.png"  width="17px" height="17px">
@@ -36,9 +36,9 @@ include ('../config/config.php');
             Sortuj
         </button>
 
-        <button class="menu_fourth" onclick="window.location.href='../logout.php'">
+        <a href="../logout.php"><button class="menu_fourth">
             <img src="../img/stop.png"  width="17px" height="17px">Wyloguj
-        </button>
+        </button></a>
 
         <button class="menu_fourth">
             <img src="../img/pass.png"  width="17px" height="17px">Zmień hasło
@@ -52,7 +52,7 @@ include ('../config/config.php');
 
 <div class="page">
     <header>
-        Baza Wiedzy CSSA
+        <?php echo $line_logo['text_setting']; ?>
     </header>
 
     <div class="page_slave">
@@ -89,6 +89,7 @@ include ('../config/config.php');
     </div>
     </div>
 <?php
+$db->close();
 }
 else
 {
