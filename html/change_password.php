@@ -26,25 +26,25 @@ if ($_POST['old_password'] && $_POST['new_password1'] && $_POST['new_password2']
                 if ($result = $db->query($query_update))
                 //zmiana hasła
                 {
-                    $_SESSION['alert_pass'] = "Hasło zostało zmienione";
+                    $_SESSION['alert'] = "Hasło zostało zmienione";
                     header('location: main.php');
                 }
                 else
                 {
-                    $_SESSION['alert_pass'] = "SQL Error (UPDATE)";
+                    $_SESSION['alert'] = "SQL Error (UPDATE)";
                     header('location: main.php');
                 }
             }
             else
             {
-                $_SESSION['alert_pass'] = "Błąd: Podałeś błędne obecne hasło";
+                $_SESSION['alert'] = "Błąd: Podałeś błędne obecne hasło";
                 header('location: main.php');
                 exit();
             }
         }
         else
         {
-            $_SESSION['alert_pass'] = "SQL Error (SELECT)";
+            $_SESSION['alert'] = "SQL Error (SELECT)";
             header('location: main.php');
             exit();
         }
@@ -52,14 +52,14 @@ if ($_POST['old_password'] && $_POST['new_password1'] && $_POST['new_password2']
     }
     else
     {
-        $_SESSION['alert_pass'] = "Błąd: Nowe hasła się różnią";
+        $_SESSION['alert'] = "Błąd: Nowe hasła się różnią";
         header('location: main.php');
         exit();
     }
 }
 else
 {
-   $_SESSION['alert_pass'] = "Błąd: Pola nie mogą być puste";
+   $_SESSION['alert'] = "Błąd: Pola nie mogą być puste";
    header('location: main.php');
 
 }

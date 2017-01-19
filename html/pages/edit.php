@@ -64,16 +64,16 @@ $ID_wiki = $_GET['id'];
     </div>
 </div>
 
-<form action="edit_ok.php" method="post">
+<form action="edit_ok.php?id=<?php echo $ID_wiki;?>" method="post">
 <div class="menu_first_more">
     <div class="menu_second">
         <div class="menu_center">
-                <?php echo"<a href='del.php?id=".$ID_wiki."'>"?> <button class="menu_third_more">
+                <?php echo"<a href='edit_ok.php?id=".$ID_wiki."'>"?> <button class="menu_third_more" type="submit">
                 <img src="../img/ok.png" width="17px" height="17px">
                 Zatwierdź
             </button></a>
 
-            <?php echo"<a href='read_more.php?id=".$ID_wiki."'>"?> <button class="menu_third_more">
+            <?php echo"<a href='read_more.php?id=".$ID_wiki."'>"?> <button class="menu_third_more" type="button">
                 <img src="../img/no.png"  width="17px" height="17px">
                 Anuluj
             </button></a>
@@ -96,8 +96,8 @@ $ID_wiki = $_GET['id'];
             $line = $result->fetch_assoc(); //wpisanie wyniku do tablicy assocjacyjnej
             echo "
             <div class=\"inbox_more\">
-            <div class='inbox_edit_top'><input type='text' value='".$line['title']."' size='50px'></span><br /><hr>
-            <span style=\"text-align: left\"> <textarea class=\"edit_contents\">".$line['contents']."'</textarea></div> 
+            <div class='inbox_edit_top'><input type='text' value='".$line['title']."' name='title' size='50px'></span><br /><hr>
+            <span style=\"text-align: left\"> <textarea class=\"edit_contents\" name='contents' maxlength=\"2000\">".$line['contents']."</textarea></div> 
             <div class=\"inbox_more_bottom\"><hr>
             
             
@@ -115,7 +115,8 @@ $ID_wiki = $_GET['id'];
 </div>
 </div>
 <?php
-$db->close();}
+$db->close();
+}
 else
 {
     header('location: ../logout.php');
