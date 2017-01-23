@@ -21,8 +21,30 @@ $surname = $_SESSION['surname'];
     <link href="css/style.css" rel="stylesheet">
     <link href="css/change_password.css" rel="stylesheet">
     <script src="js/script.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery-3.1.1.js"></script>
+
+
+
 </head>
 <body>
+
+<div class="container">
+<nav class="navbar navbar-default btn-variants">
+    <a class="btn btn-default" href="#" role="button">Strona domowa</a>
+    <a class="btn btn-primary" href="#" role="button">Link</a>
+    <a class="btn btn-default" href="#" role="button">Link</a>
+    <a class="btn btn-default" href="#" role="button">Link</a>
+
+
+</nav>
+
+
+
+
+
 
 <div class="menu_first">
     <div class="menu_second">
@@ -163,6 +185,6 @@ $surname = $_SESSION['surname'];
         }
         //LOGOWANIE - SPRAWDZENIE - STOP
         ?>
-
+    </div>
 </body>
 </html>

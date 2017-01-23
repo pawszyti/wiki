@@ -4,7 +4,7 @@ if ($_POST['username']=="" || $_POST['password']=="")
 //sprawdza czy pole login lub hasło jest puste
 {
     header('location: index.php');
-    $_SESSION['error'] = '<span style="color:red">Pola nie mogą być puste</span>';
+    $_SESSION['error'] = '<div class="alert alert-danger">Pola nie mogą być puste</div>';
     exit();
 }
 require_once ('config/config.php');
@@ -33,7 +33,7 @@ if ($result = $db->query(sprintf("SELECT * FROM users WHERE username='%s' AND pa
         }
         else
         {
-            $_SESSION['error'] = '<span style="color:red">Niepoprawne dane logowania</span>';
+            $_SESSION['error'] = '<div class="alert alert-danger">Niepoprawne dane logowania</div>';
             header('location: index.php');
         }
 }

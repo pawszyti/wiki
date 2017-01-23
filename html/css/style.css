@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Fresca");
 @import url("https://fonts.googleapis.com/css?family=Gloria+Hallelujah");
 /*______________________________________________________________________________ */
+/* Bootstrap */
+.login {
+  margin-top: 50px; }
+
+.navbar {
+  margin-top: 10px; }
+
+/* Bootstrap - end */
 body {
   margin: 0;
   padding: 0; }
@@ -114,15 +122,6 @@ a {
   margin-top: 50px; }
 
 /* Strona logowania */
-.login {
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #4fcbe9;
-  padding: 50px;
-  text-align: center;
-  width: 270px;
-  border-radius: 20px; }
-
 .add_contents {
   min-height: 350px;
   width: 700px;

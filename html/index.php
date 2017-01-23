@@ -14,35 +14,44 @@ require_once ('config/config.php');
     <meta name="author" content="Paweł Szymczyk" />
     <title>Baza Wiedzy</title>
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery-3.1.1.js"></script>
 </head>
 <body>
+<div class="container">
 
-<div class="page">
-<header>
-    <?php echo $line_logo['text_setting']; ?>
-</header>
+    <div class="row login">
+        <div class="col-lg-4 col-md-4 col-sm-6 colcol-lg-offset-4 col-md-offset-4 col-sm-offset-3">
 
-<div class="login">
-    <span style="font-size: 25px"> Panel logowania </span><br />    <br />
-<form action="login.php" method="post">
-    Login: <input type="text" name="username" size="20px">
-    <br />    <br />
-    Hasło: <input type="password" name="password" size="20px">
-    <br />    <br />
-    <input type="submit" name="login" value="Zaloguj">
-</form>
+                <h1><span class="text-center"> <?php echo $line_logo['text_setting']; ?> </h1></span>
+            <div class="alert alert-warning">Wymagane jest zalogowanie</div>
 
-    <?php
-    if(isset($_SESSION['error'])) {
-        $error = $_SESSION['error'];
-        unset($_SESSION['error']);
-        echo "<br />" . $error;
-    }
-    $db->close();
-    ?>
-    </div>
+            <form action="login.php" method="post">
+                    <div class="form-group">
+                        Login: <input type="text" name="username" class="form-control" placeholder="Login">
+                    </div>
+                    <div class="form-group">
+                    Hasło: <input type="password" name="password" class="form-control" placeholder="Hasło">
+                    </div>
+                <button type="submit" class="btn btn-primary">Zaloguj</button>
+            </div>
+            </form>
+
+
+        </div>
     <br />
-</div>
+
+<?php
+if(isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']);
+    echo "<br />" . $error;
+}
+$db->close();
+?>
+</div> <!-- /container -->
 </body>
 </html>
 
