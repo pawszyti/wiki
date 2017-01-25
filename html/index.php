@@ -15,15 +15,15 @@ require_once ('config/config.php');
     <title>Baza Wiedzy</title>
     <link href="css/style.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/bootstrap-grid.css" rel="stylesheet">
+    <link href="css/bootstrap-reboot.css" rel="stylesheet">
     <script src="js/bootstrap.js"></script>
     <script src="js/jquery-3.1.1.js"></script>
 </head>
 <body>
-<div class="container">
-
+<div class="container main">
     <div class="row login">
-        <div class="col-lg-4 col-md-4 col-sm-6 colcol-lg-offset-4 col-md-offset-4 col-sm-offset-3">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-lg-offset-4 col-md-offset-4 col-sm-offset-3">
 
                 <h1><span class="text-center"> <?php echo $line_logo['text_setting']; ?> </h1></span>
             <div class="alert alert-warning">Wymagane jest zalogowanie</div>
