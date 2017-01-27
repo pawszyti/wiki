@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css?family=Fresca");
+@import url("https://fonts.googleapis.com/css?family=Gloria+Hallelujah");
+/*______________________________________________________________________________ */
+/* Bootstrap */
+.login {
+  margin-top: 50px; }
+
+.navi {
+  margin-right: 10px; }
+
+.user {
+  font-size: 70%; }
+
+.change_pass_button {
+  font-size: 90%; }
+
+.title {
+  text-decoration: none;
+  font-weight: bold;
+  color: white; }
+
+.container {
+  background-color: #fdfdfd; }
+
+/* Bootstrap - end */
+body {
+  min-height: 960px; }
+
+/* menu - start */
+.menu_first {
+  background-color: #4fcbe9;
+  width: 100%;
+  padding-bottom: 60px;
+  margin-top: 400px; }
+
+.menu_second {
+  width: 1050px;
+  margin-right: auto;
+  margin-left: auto; }
+
+.menu_third, .active {
+  background-color: #aae6f4;
+  float: left;
+  padding: 10px;
+  vertical-align: middle;
+  display: block;
+  border-radius: 10px;
+  margin: 7px; }
+
+.menu_third:hover, .active:hover {
+  background-color: #7cd8ef;
+  transition-duration: 0.5s; }
+
+.menu_fourth, .menu_five {
+  background-color: #aae6f4;
+  float: right;
+  padding: 5px;
+  vertical-align: middle;
+  display: block;
+  text-align: center;
+  display: block;
+  border-radius: 20px;
+  margin: 7px; }
+
+.active {
+  background-color: #7cd8ef;
+  border: none; }
+
+.menu_fourth:hover, .menu_five:hover {
+  background-color: #7cd8ef;
+  transition-duration: 0.5s; }
+
+*:focus {
+  outline: none; }
+
+/* menu - end */
+.page {
+  width: 1050px;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: "Arial"; }
+
+.page_slave {
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #aae6f4;
+  border-radius: 20px;
+  padding-bottom: 20px; }
+
+header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 40px;
+  text-align: center; }
+
+.search, .contents, .inbox, .add {
+  padding: 15px;
+  background-color: #4fcbe9;
+  text-align: center;
+  border-radius: 20px; }
+
+.contents {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  background-color: #d7f3fa;
+  border-style: ridge;
+  width: 950px; }
+
+.inbox {
+  margin-right: auto;
+  margin-left: auto;
+  border-style: ridge;
+  margin-top: 20px;
+  text-align: justify;
+  background-color: white;
+  width: 80%; }
+
+.inbox2 {
+  height: 50px; }
+
+a {
+  text-decoration: none;
+  color: black; }
+
+.menu_image {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  margin-top: 50px; }
+
+/* Strona logowania */
+.add_contents {
+  min-height: 350px;
+  width: 700px;
+  margin-top: 30px;
+  margin-bottom: 20px; }
+
+.edit_contents {
+  height: 400px;
+  width: 793px;
+  margin-top: 30px;
+  margin-bottom: 20px; }
+
+.page_num {
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none; }
+
+.message {
+  text-align: center;
+  color: #ff0000;
+  margin-top: 10px; }
+
+.select {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px; }
+
+/*# sourceMappingURL=style.css.map */

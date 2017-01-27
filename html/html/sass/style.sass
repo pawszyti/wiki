@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css?family=Fresca')
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah')
+
+$bg: #4fcbe9
+
+@mixin size($width,$height)
+  width: $width
+  height: $height
+@mixin center
+  margin-right: auto
+  margin-left: auto
+@mixin margin($top,$bottom)
+  margin-top: $top
+  margin-bottom: $bottom
+
+
+
+/*______________________________________________________________________________*/
+
+
+/* Bootstrap */
+
+.login
+  margin-top: 50px
+
+.navi
+  margin-right: 10px
+
+.user
+  font-size: 70%
+
+.change_pass_button
+  font-size: 90%
+
+.title
+  text-decoration: none
+  font-weight: bold
+  color: white
+
+.container
+  background-color: rgb(253,253,253)
+
+/* Bootstrap - end */
+
+
+
+
+
+
+
+body
+  min-height: 960px
+
+/* menu - start
+
+.menu_first
+  background-color: $bg
+  width: 100%
+  padding-bottom: 60px
+  margin-top: 400px
+
+.menu_second
+  width: 1050px
+  @include center
+
+
+
+.menu_third
+  background-color: lighten($bg,20)
+  float: left
+  padding: 10px
+  vertical-align: middle
+  display: block
+  border-radius: 10px
+  margin: 7px
+
+
+
+.menu_third:hover
+  background-color: lighten($bg,10)
+  transition-duration: .5s
+
+.menu_fourth
+  background-color: lighten($bg,20)
+  float: right
+  padding: 5px
+  vertical-align: middle
+  display: block
+  text-align: center
+  display: block
+  border-radius: 20px
+  margin: 7px
+
+.menu_five
+  @extend .menu_fourth
+
+.active
+  @extend .menu_third
+  background-color: lighten($bg,10)
+  border: none
+
+
+
+.menu_fourth:hover
+  background-color: lighten($bg,10)
+  transition-duration: .5s
+
+
+*:focus
+  outline: none
+
+
+
+/* menu - end
+
+.page
+  width: 1050px
+  @include center
+  font-family: 'Arial'
+
+.page_slave
+  @include center
+  background-color: lighten($bg,20)
+  border-radius: 20px
+  padding-bottom: 20px
+
+
+header
+  @include margin(20px,20px)
+  width: 100%
+  font-family: 'Gloria Hallelujah', cursive
+  font-size: 40px
+  text-align: center
+
+.search
+  padding: 15px
+  background-color: $bg
+  text-align: center
+  border-radius: 20px
+
+.contents
+  @extend .search
+  @include center
+  margin-top: 50px
+  background-color: lighten($bg,30)
+  border-style: ridge
+  width: 950px
+
+
+.inbox
+  @extend .search
+  @include center
+  border-style: ridge
+  margin-top: 20px
+  text-align: justify
+  background-color: lighten($bg,40)
+  width: 80%
+
+.inbox2
+  height: 50px
+
+
+
+
+a
+  text-decoration: none
+  color: black
+
+.menu_image
+  @include center
+  text-align: center
+  margin-top: 50px
+
+
+/* Strona logowania
+
+
+
+.add
+  @extend .search
+
+
+.add_contents
+  min-height: 350px
+  width: 700px
+  margin-top: 30px
+  margin-bottom: 20px
+
+.edit_contents
+  height: 400px
+  width: 793px
+  margin-top: 30px
+  margin-bottom: 20px
+
+.page_num
+  text-align: center
+  font-size: 16px
+  text-decoration: none
+
+.message
+  text-align: center
+  color: #ff0000
+  margin-top: 10px
+
+.select
+  @include center
+  margin-top: 20px
